@@ -403,9 +403,10 @@ section { padding: 5% 10%; }
     margin-top: 1.5rem;
 }
 
+/* UPDATED: Contact Items for Mobile wrapping */
 .contact-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Changed from center so if it drops to a new line, the text stays aligned with the top of the icon */
     font-size: 1.1rem;
 }
 
@@ -419,7 +420,14 @@ section { padding: 5% 10%; }
 }
 
 .contact-icon { width: 20px; height: 20px; object-fit: contain; }
-.contact-value { color: var(--silver); }
+
+/* UPDATED: Contact Value word-break */
+.contact-value { 
+    color: var(--silver); 
+    word-break: break-word; /* This is the magic line that stops the email from flowing off screen! */
+    flex: 1; /* Makes sure the text respects the boundaries of the container */
+    padding-top: 2px; /* Keeps it visually centered with the icon */
+}
 
 .contact-value.link {
     text-decoration: none;
@@ -515,9 +523,19 @@ footer {
 
     .project-grid { grid-template-columns: 1fr; }
 
+    /* UPDATED: Reduced padding on mobile so contact text has more space */
     .contact-container {
         grid-template-columns: 1fr;
-        gap: 3rem;
-        padding: 2rem;
+        gap: 2.5rem;
+        padding: 1.5rem; 
+    }
+    
+    /* UPDATED: Shrunk label width slightly on mobile so the long email fits better */
+    .contact-label {
+        width: 100px;
+    }
+    
+    .contact-item {
+        font-size: 0.95rem;
     }
 }
