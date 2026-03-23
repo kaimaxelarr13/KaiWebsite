@@ -1,0 +1,664 @@
+/* =========================================
+   Color Palette & Variables 
+   ========================================= */
+   :root {
+    --black: #121413;
+    --jungle-green: #24412c;
+    --sage-green: #899e8b;
+    --silver: #c4c9c5;
+    --text-light: #f0f2f0;
+    --text-dark: #121413;
+}
+
+/* =========================================
+   Global Reset & Smooth Scrolling 
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; 
+}
+
+body {
+    background-color: var(--black);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* =========================================
+   Navigation Bar (Floating Pill Design)
+   ========================================= */
+.navbar {
+    position: fixed; 
+    top: 25px; 
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    z-index: 1000; 
+    pointer-events: none; 
+}
+
+.nav-links {
+    pointer-events: auto; 
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    background-color: rgba(18, 20, 19, 0.6); 
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px); 
+    padding: 8px 12px;
+    border-radius: 50px; 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+}
+
+.nav-links li a {
+    color: var(--silver);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    padding: 10px 24px;
+    border-radius: 40px; 
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+    background-color: rgba(255, 255, 255, 0.1); 
+    color: #ffffff;
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.7); 
+}
+
+/* =========================================
+   Splash / Intro Screen 
+   ========================================= */
+.splash-section {
+    width: 100%;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--black) 40%, var(--jungle-green) 100%);
+    overflow: hidden;
+    position: relative; 
+}
+
+#orb-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+    pointer-events: none; 
+}
+
+.splash-content {
+    position: relative;
+    z-index: 2; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px; 
+}
+
+.splash-logo {
+    width: 750px; 
+    max-width: 90vw; 
+    height: auto;
+    margin-left: 4%; 
+    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.6));
+    transition: filter 0.4s ease, transform 0.4s ease; 
+}
+
+.splash-logo:hover {
+    transform: translateY(-5px); 
+    filter: drop-shadow(0px 15px 30px rgba(36, 65, 44, 0.9)) 
+            drop-shadow(0px 0px 40px rgba(137, 158, 139, 0.5));
+}
+
+/* =========================================
+   Scroll Indicator 
+   ========================================= */
+.scroll-indicator {
+    margin-top: 3rem;
+    color: var(--sage-green);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none; 
+    animation: floatBounce 2s ease-in-out infinite; 
+}
+
+.scroll-indicator p {
+    margin: 0;
+    font-weight: 600;
+}
+
+.scroll-indicator:hover {
+    color: var(--silver); 
+}
+
+.arrow-down {
+    width: 15px;
+    height: 15px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+}
+
+@keyframes floatBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(12px); }
+}
+
+/* =========================================
+   About Me / Hero Section 
+   ========================================= */
+.hero {
+    display: flex;
+    align-items: center; 
+    padding: 8% 10%; 
+    background-color: var(--black);
+    border-bottom: 2px solid var(--sage-green);
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 4rem; 
+}
+
+.hero-text {
+    flex: 1; 
+}
+
+.hero-text h1 {
+    font-size: 4rem;
+    color: var(--silver);
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.hero-text h2 {
+    font-size: 1.5rem;
+    color: var(--sage-green);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.hero-text p {
+    max-width: 600px;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.hero-image {
+    flex-shrink: 0; 
+}
+
+/* =========================================
+   Profile Image & Resume Button
+   ========================================= */
+.profile-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 350px; /* Locks the width so the button matches the image exactly */
+}
+
+#profile-image-frame {
+    position: relative;
+    display: inline-block;
+    width: 100%; 
+    height: 450px;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+#profile-image-frame img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 8px; 
+    border: 2px solid var(--sage-green); 
+    box-shadow: 0 10px 20px rgba(137, 158, 139, 0.2); 
+    transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+.engineer-photo {
+    opacity: 0;
+}
+
+#profile-image-frame:hover {
+    transform: translateY(-5px); 
+}
+
+#profile-image-frame:hover .main-photo {
+    opacity: 0;
+}
+
+#profile-image-frame:hover .engineer-photo {
+    opacity: 1;
+    filter: drop-shadow(0px 15px 30px rgba(36, 65, 44, 0.9)) 
+            drop-shadow(0px 0px 40px rgba(137, 158, 139, 0.5));
+}
+
+.resume-btn {
+    width: 100%;
+    text-align: center;
+    letter-spacing: 1px;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   Buttons 
+   ========================================= */
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: var(--sage-green);
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--sage-green);
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: var(--sage-green);
+}
+
+.btn-outline {
+    background: transparent; 
+    color: var(--sage-green); 
+    margin-left: 10px;
+}
+
+.btn-outline:hover {
+    background-color: var(--sage-green);
+    color: var(--text-dark);
+}
+
+/* =========================================
+   General Section Formatting 
+   ========================================= */
+section {
+    padding: 5% 10%;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--silver);
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    background-color: var(--jungle-green);
+    bottom: -10px;
+    left: 0;
+}
+
+/* =========================================
+   Projects Grid (Updated for 5 works)
+   ========================================= */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: rgba(36, 65, 44, 0.3);
+    border: 1px solid var(--jungle-green);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(137, 158, 139, 0.2);
+    border-color: var(--sage-green);
+}
+
+/* New Work Image Container */
+.work-pic-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.work-pic-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+/* Brighten and slightly zoom the project image on hover */
+.project-card:hover .work-pic-container img {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+.project-card h3 {
+    color: var(--silver);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-role {
+    color: var(--sage-green);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tech-tags {
+    margin-top: auto; 
+    padding-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-tag {
+    background-color: var(--black);
+    color: var(--sage-green);
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    border: 1px solid var(--sage-green);
+}
+
+/* =========================================
+   Skills / Expertise Section 
+   ========================================= */
+.skills-container {
+    display: flex; 
+    gap: 2rem; 
+    flex-wrap: wrap;
+}
+
+.skills-column {
+    flex: 1; 
+    min-width: 250px;
+}
+
+.skills-column h3 {
+    color: var(--sage-green); 
+    margin-bottom: 1rem;
+}
+
+.skills-column ul {
+    list-style: none; 
+    color: var(--silver);
+}
+
+/* =========================================
+   Inquiry / Contact Section 
+   ========================================= */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; 
+    gap: 4rem;
+    background-color: rgba(36, 65, 44, 0.2); 
+    border: 1px solid var(--jungle-green);
+    border-radius: 12px;
+    padding: 3.5rem;
+    max-width: 1100px;
+}
+
+/* Left Side: Info */
+.contact-info-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center; /* Aligns the icon perfectly with the text */
+    font-size: 1.1rem;
+}
+
+.contact-label {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the custom icon and the word */
+    color: var(--sage-green);
+    font-weight: bold;
+    width: 130px; /* Gives enough room for the icon and label */
+}
+
+/* Styling for the custom image icons you will add */
+.contact-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.contact-value {
+    color: var(--silver);
+}
+
+.contact-value.link {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-value.link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Right Side: Form styling */
+.inquiry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.inquiry-form input, 
+.inquiry-form textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    background-color: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    border-radius: 12px; 
+    color: var(--text-light);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.inquiry-form input::placeholder, 
+.inquiry-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.inquiry-form input:focus, 
+.inquiry-form textarea:focus {
+    border-color: var(--sage-green);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.inquiry-form textarea {
+    resize: vertical;
+    min-height: 160px;
+}
+
+.submit-btn {
+    background-color: var(--sage-green);
+    color: var(--text-dark);
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: 1px solid var(--sage-green);
+    padding: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(137, 158, 139, 0.2); 
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    background-color: transparent; 
+    color: var(--sage-green); 
+    box-shadow: 0 8px 25px rgba(137, 158, 139, 0.4); 
+}
+
+/* =========================================
+   Compact Footer 
+   ========================================= */
+footer {
+    background-color: var(--jungle-green);
+    text-align: center;
+    padding: 2rem 10%;
+    border-top: 2px solid var(--sage-green);
+}
+
+.footer-brief {
+    color: var(--silver);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.footer-links a {
+    color: var(--sage-green);
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.copyright {
+    margin-top: 1.5rem; 
+    font-size: 0.8rem; 
+    color: rgba(255, 255, 255, 0.5); 
+}
+
+/* =========================================
+   Responsive Design (Mobile/Tablets)
+   ========================================= */
+   
+/* Adjust the project grid for medium screens (tablets) to show 2 columns instead of 3 */
+@media (max-width: 992px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Adjust for small screens (phones) */
+@media (max-width: 768px) {
+    .navbar {
+        top: 15px;
+    }
+    
+    .nav-links {
+        padding: 5px 10px;
+    }
+    
+    .nav-links li a {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+
+    .hero-content {
+        flex-direction: column-reverse; 
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-text p {
+        margin: 0 auto 2rem auto; 
+    }
+
+    .hero-text h1 { 
+        font-size: 3rem; 
+    }
+    
+    .section-title { 
+        font-size: 2rem; 
+    }
+    
+    /* Makes sure the wrapper and image scale down together nicely on mobile */
+    .profile-wrapper {
+        width: 250px;
+        margin: 0 auto;
+    }
+    
+    #profile-image-frame {
+        height: 350px;
+    }
+    
+    .splash-logo {
+        width: 350px; 
+        margin-left: 2%; 
+    }
+    
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 2rem;
+    }
+}
