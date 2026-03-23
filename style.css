@@ -277,7 +277,9 @@ body {
 }
 
 .resume-btn {
+    display: block;
     width: 100%;
+    margin: 0 !important; /* This overrides the left margin from .btn-outline */
     text-align: center;
     letter-spacing: 1px;
     box-sizing: border-box;
